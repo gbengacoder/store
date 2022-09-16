@@ -1,0 +1,70 @@
+.heroContainer{
+    background: #ffffff;
+    height: 95vh;
+    .hero{
+        max-width: 790px;
+        margin: 0 auto;
+        padding: 22px;
+        font-family: 'poppins';
+
+
+        .first{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+            .left{
+                h3{
+                    line-height: 1.9;
+                    margin: 18px 0;
+                }
+                h2{
+                    font-size: 2.1em;
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                }
+
+                button{
+                    background: black;
+                    color: white;
+                    padding: 12px 14px;
+                    font-size: 22px;
+                }
+            }
+            img{
+                padding: 22px 0;
+                height: 400px;
+                width: 400px;
+                margin: 0 18px;
+            }
+        }
+    }
+}
+
+@media (max-width:560px) {
+    .heroContainer{
+           height: 30vh;
+           width: 100%;
+  
+.hero{
+
+    .first{
+        .left{
+            h2{
+                font-size: 1.2em;
+            }
+
+            h3{
+                font-size: 12px;
+            }
+        }
+
+        button{
+            display: none;
+        }
+        img{
+            display: none;
+        }
+    }
+}
+       }
+}

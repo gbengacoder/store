@@ -1,0 +1,46 @@
+.container{
+    display: flex;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 22px;
+    gap: 3%;
+    .left{
+         flex: 1;
+       
+     img{
+        height: 400px;
+        width: 100%;
+     }
+    }
+
+    .right{
+      flex: 1;
+      h2{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: red;
+     }
+
+     p{
+        font-size: 16px;
+        line-height: 1.6;
+        text-transform: capitalize;
+        margin: 5px 0;
+     }
+
+     .price{
+        font-weight:900;
+        font-size: 2.2em;
+        font-family: sans-serif;
+        margin-bottom: 5px;
+     }
+
+     button{
+        padding: 12px;
+        font-size: 18px;
+        background: black;
+        color: white;
+        font-weight: 800;
+        cursor: pointer;
+     }
+    }
+}
