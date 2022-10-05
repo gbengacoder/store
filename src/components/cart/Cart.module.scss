@@ -13,7 +13,7 @@
         margin: 10px 0 ; 
     }
     .empty{
-        color: red;
+        color: #fc6832;
         position: absolute;
         left: 40%;
         background: transparent;
@@ -69,3 +69,11 @@
         }
     }
 }
+
+@media (max-width:450px) { 
+    .cart{
+        width: 300px;
+       
+    }
+}
+
