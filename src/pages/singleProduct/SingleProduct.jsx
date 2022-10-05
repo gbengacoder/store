@@ -47,7 +47,7 @@ const [product , setProduct] = useState({})
           </h2>
           <p>{description}</p>
 
-        <div className={price}>
+        <div className={classes.price}>
           ${price}
         </div>
 

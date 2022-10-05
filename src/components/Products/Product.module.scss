@@ -11,19 +11,21 @@
 
 .productContainer:hover{
     scale: 1.03;
+    
+    box-shadow: 1px 2px 4px 0px #8c8a8abf;
 }
 
 .productContainer{
-    height: 420px;
+    height: fit-content;
    
-    box-shadow: 2px 3px 5px 0px #8c8a8abf;
     margin: 24px 20px;
     position: relative;
     transition: 0.3s;
    .top{
+   
     img{
-      height: 300px;
-      width: 100%;
+      height: 200px;
+       width: 200px;
         
     }
    }
@@ -32,15 +34,15 @@
     
     margin-top:5px ;
     padding: 5px 12px;
-
+    
+    .title{
+        height: 25px;
+        font-size: 12px;
+        margin: 5px 0;
+    }
     .price{
         font-size: 22px;
-        background: black;
-        color: white;
-        width: fit-content;
-        position: absolute;
-        padding: 5px;
-        bottom: 2px;
+         margin: 8px 0;
     }
    }
 }
