@@ -9,7 +9,7 @@ export const CartContext = createContext(initialState);
 
 const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
-
+  
   const [cartIsShown, setCartIsShown] = useState(false);
   const [change, setChange] = useState(false);
 
@@ -18,11 +18,17 @@ const CartProvider = ({ children }) => {
   }
 
   function addToCart(items) {
+
+    console.log(state.cartItem)
     setChange(!change);
     state.totalQty++;
-    const newItem = items;
-    const existingItem = state.cartItem.find((item) => item.id === newItem.id);
 
+    console.log(state.totalQty)
+    const newItem = items;
+    console.log(newItem)
+    const existingItem = state.cartItem.find((item) => item.id === newItem.id) 
+    //console.log(existingItem?. null ) 
+    newItem.totalPrice = newItem.price
     if (!existingItem) {
       dispatch({
         type: "add_cart",
@@ -32,6 +38,10 @@ const CartProvider = ({ children }) => {
       existingItem.quantity++;
       existingItem.totalPrice = existingItem.price * existingItem.quantity;
     }
+
+    console.log(state.cartItem)
+
+
   }
 
   function emptyCart() {
@@ -41,7 +51,7 @@ const CartProvider = ({ children }) => {
   }
   function removeFromCart(id) {
     const existingItem = state.cartItem.find((item) => item.id === id);
-
+    console.log(existingItem)
     if (existingItem.quantity === 1) {
       state.totalQty = 0;
       state.cartItem = state.cartItem.filter((item) => item.id !== id);

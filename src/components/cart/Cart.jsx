@@ -8,12 +8,21 @@ const Cart = () => {
   useEffect(() => {}, [ctx]);
   const items = ctx.cartItems;
 
+  console.log(items);
+
   const emptyCart = ctx.emptyCart;
 
   const sumPrice =
     items.length != 0
       ? items.map((item) => item.totalPrice).reduce((a, b) => a + b)
-      : items.map((item) => item[0].price);
+      : items.map((item) =>{
+
+        item[0].price
+
+      }
+       );
+
+
   return (
     <div className={classes.cart}>
       {items.length === 0 && <h3>Cart is Empty</h3>}
@@ -28,7 +37,7 @@ const Cart = () => {
         />
       ))}
 
-      {items.length !== 0 && <h4>Total Price : ${sumPrice}</h4>}
+      {items.length !== 0 && <h4>Total Price : ${sumPrice.toFixed(2)}</h4>}
 
       {items.length != 0 && (
         <button
@@ -37,7 +46,7 @@ const Cart = () => {
             emptyCart();
           }}
         >
-          Empty Cart
+          Remove All Items
         </button>
       )}
     </div>
@@ -45,6 +54,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
-
-

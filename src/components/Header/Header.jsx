@@ -9,8 +9,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
  
 
 const Header = () => {
-  const {toggleCart , totalQuantity , cartItems} = useContext(CartContext)
- let totalQty = cartItems.length
+  const {toggleCart , cartItems} = useContext(CartContext)
+  const items = cartItems
+  const totalItemQuantity =
+  items.length != 0
+    ? items.map((item) => item.quantity).reduce((a, b) => a + b)
+    :0
+
 
   return (
     <div className={classes.container}>
@@ -23,7 +28,7 @@ const Header = () => {
             
             <div className={classes.cart}>
                <p className={classes.qty}>
-            {totalQty}
+            {totalItemQuantity}
                </p>
             <FontAwesomeIcon  onClick={() => toggleCart()}  icon={faShoppingCart} size = '2x' style ={{color : 'black'}} />
             </div>
