@@ -8,20 +8,14 @@ const Cart = () => {
   useEffect(() => {}, [ctx]);
   const items = ctx.cartItems;
 
-  console.log(items);
-
   const emptyCart = ctx.emptyCart;
 
   const sumPrice =
     items.length != 0
       ? items.map((item) => item.totalPrice).reduce((a, b) => a + b)
-      : items.map((item) =>{
-
-        item[0].price
-
-      }
-       );
-
+      : items.map((item) => {
+          item[0].price;
+        });
 
   return (
     <div className={classes.cart}>

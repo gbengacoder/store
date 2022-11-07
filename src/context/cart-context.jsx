@@ -1,15 +1,18 @@
 import { useState, createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
 
+const obj = window.localStorage.getItem("cart");
+const cartState = JSON.parse(obj) || [];
+
 const initialState = {
   totalQty: 0,
-  cartItem: [],
+  cartItem: cartState,
 };
 export const CartContext = createContext(initialState);
 
 const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
-  
+
   const [cartIsShown, setCartIsShown] = useState(false);
   const [change, setChange] = useState(false);
 
@@ -18,17 +21,14 @@ const CartProvider = ({ children }) => {
   }
 
   function addToCart(items) {
-
-    console.log(state.cartItem)
     setChange(!change);
     state.totalQty++;
 
-    console.log(state.totalQty)
     const newItem = items;
-    console.log(newItem)
-    const existingItem = state.cartItem.find((item) => item.id === newItem.id) 
-    //console.log(existingItem?. null ) 
-    newItem.totalPrice = newItem.price
+
+    const existingItem = state.cartItem.find((item) => item.id === newItem.id);
+
+    newItem.totalPrice = newItem.price;
     if (!existingItem) {
       dispatch({
         type: "add_cart",
@@ -39,19 +39,20 @@ const CartProvider = ({ children }) => {
       existingItem.totalPrice = existingItem.price * existingItem.quantity;
     }
 
-    console.log(state.cartItem)
+    const cartArr = state.cartItem;
 
-
+    window.localStorage.setItem("cart", JSON.stringify(cartArr));
   }
 
   function emptyCart() {
     dispatch({
       type: "empty_cart",
     });
+    window.localStorage.setItem("cart", JSON.stringify([]));
   }
   function removeFromCart(id) {
     const existingItem = state.cartItem.find((item) => item.id === id);
-    console.log(existingItem)
+    
     if (existingItem.quantity === 1) {
       state.totalQty = 0;
       state.cartItem = state.cartItem.filter((item) => item.id !== id);
@@ -60,11 +61,14 @@ const CartProvider = ({ children }) => {
       existingItem.quantity--;
       existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
     }
-    console.log(id);
+    
     dispatch({
       type: "remove_cart",
       payload: id,
     });
+
+    const cartArr = state.cartItem;
+    window.localStorage.setItem("cart", JSON.stringify(cartArr));
   }
 
   return (
